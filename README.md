@@ -72,13 +72,13 @@ You can run this as many times as you want. Whenever you want to export the exis
 ./get_tweets.py
 ~~~~~
 
-This will create a csv file in the csv folder with the new tweets found after the last export. If you loose this csv file or if you want to get all the existing tweets from start just erase the file ```pickles/exported_tweets.p``` and run find_tweets again.
+This will create a csv file in a generated csv folder with the new tweets found after the last export. If you lose this csv file or if you want to get all the existing tweets from start just erase the file ```pickles/exported_tweets.p``` and run find_tweets again.
 
-For the moment the only way to get full information of the tweets collected (date, retweet count, user, and such) is to load the pickle file ```pickles/filtered_tweets.p```.
+For the moment the only way to get full information of tweets collected (date, retweet count, user, and such) is to load the pickle file ```pickles/filtered_tweets.p```.
 
 ## Future Work ##
-
+1. Creating a script to deliver tweet information in a more elegant way than a pickle file.
+2. Using the library [TwitterSearch](https://pypi.python.org/pypi/TwitterSearch) to implement searches with multiple keywords.
 
 ## Author ##
-
-**Simon Bolivar University**, 2014. Sofia Bravo. 09-10114@usb.ve.
+Sofia Bravo. 09-10114@usb.ve.

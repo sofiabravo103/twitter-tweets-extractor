@@ -1,3 +1,5 @@
+#!/usr/bin/python2
+
 import twitter
 import hashlib
 import pickle

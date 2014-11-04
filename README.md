@@ -1,4 +1,6 @@
-# twitter-extractor: An extraction tool for  building machine learning training sets from Twitter.
+# twitter-extractor 
+
+An extraction tool for  building machine learning training sets from Twitter.
 
 ## Set up ##
 
@@ -25,7 +27,7 @@
 ## Specifications file ##
 
 To get the extractor running you only need to fill the spec_information.py file. First you will need to create a twitter app [here](https://apps.twitter.com/), 
-and then go to * Keys and Access Tokens * to get your consumer key and access token, you will need this information
+and then go to ** Keys and Access Tokens ** to get your consumer key and access token, you will need this information
 to access twitter.
 
 ~~~~~
@@ -36,9 +38,7 @@ spec_access_token_secret = '...'
 ~~~~~
 
 In the examples folder you will find an example of how the configuration file must look.
-Minimal required information is either some keyword or twitter user to produce a search. Keywords are created as lists, 
-in order to provide searches using multiple words in future versions. 
-
+Minimal required information is either some keyword or twitter user to produce a search. Keywords are created as lists, in order to provide searches using multiple words in future versions. If you just want one of these then ** define both ** but leave the other in blank.
 ~~~~~
 spec_keywords = [
   ['#...'],

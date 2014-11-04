@@ -59,6 +59,22 @@ spec_rejected_users = ['...']
 
 ## Usage ##
 
+The extractor works like this: first performe a search to get tweets from the Twitter API, apply filters if defined in
+spec file, remove exact dupplicates and then store them in a python pickle. A pickle is a way add persistency to a python object and they will be stored in a pickles folder generated on the first search.
+
+To look for tweets do:
+~~~~~
+./find_tweets.py
+~~~~~
+
+You can run this as many times as you want. Whenever you want to export the existing tweets to a csv file do:
+~~~~~
+./get_tweets.py
+~~~~~
+
+This will create a csv file in the csv folder with the new tweets found after the last export. If you loose this csv file or if you want to get all the existing tweets from start just erase the file ```pickles/exported_tweets.p``` and run find_tweets again.
+
+For the moment the only way to get full information of the tweets collected (date, retweet count, user, and such) is to load the pickle file ```pickles/filtered_tweets.p```.
 
 ## Future Work ##
 

@@ -79,6 +79,3 @@ For the moment the only way to get full information of tweets collected (date, r
 ## Future Work ##
 1. Creating a script to deliver tweet information in a more elegant way than a pickle file.
 2. Using the library [TwitterSearch](https://pypi.python.org/pypi/TwitterSearch) to implement searches with multiple keywords.
-
-## Author ##
-Sofia Bravo. 09-10114@usb.ve.

@@ -1,6 +1,6 @@
 # twitter-extractor 
 
-An extraction tool for  building machine learning training sets from Twitter.
+An extraction tool for  building machine learning training sets based on tweets from Twitter.
 
 ## Set up ##
 

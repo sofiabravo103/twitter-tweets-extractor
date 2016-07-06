@@ -79,4 +79,4 @@ This will create a csv file in a generated csv folder with the new tweets found 
 For the moment the only way to get full information of tweets collected (date, retweet count, user, and such) is to load the pickle file ```pickles/filtered_tweets.p```.
 
 ## Future Work ##
-Add searches with multiple keywords using the library [TwitterSearch](https://pypi.python.org/pypi/TwitterSearch).
+Add search with multiple keywords using the library [TwitterSearch](https://pypi.python.org/pypi/TwitterSearch).

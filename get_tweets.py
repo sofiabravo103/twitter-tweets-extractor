@@ -43,15 +43,37 @@ load_data()
 new_tweets = 0
 
 for tweet in filtered_tweets.values():
+
+  # export only new tweets
   tw_hash = hashlib.md5(tweet['text'].encode('utf8')).hexdigest()
   if tw_hash not in tweets_exported:
     tweets_exported[tw_hash] = ''
-    raw_text = tweet['text'].encode('utf8')
-    raw_text = ''.join(raw_text.split(','))
-    raw_text = ''.join(raw_text.split('"'))
-    text = ''.join(raw_text.split('\n'))
-    csv.write('{0},{1},\n'.format(tweet['id'],text))
+
+    # tweet info proccesing
+    first = True
+    for key in tweet.keys():
+      if not first:
+        csv.write(';')
+      else:
+        first = False
+
+      try:
+        raw_text = tweet[key].encode('utf8')
+
+        # remove characters , : " ' and \n
+        raw_text = ''.join(raw_text.split(','))
+        raw_text = ''.join(raw_text.split(':'))
+        raw_text = ''.join(raw_text.split('"'))
+        raw_text = ''.join(raw_text.split("'"))
+        text = ''.join(raw_text.split('\n'))
+        csv.write('{0}:{1}'.format(key, text))
+      except AttributeError:
+        # attribute is not a string so don't process it
+        csv.write('{0}:{1}'.format(key, tweet[key]))
+
+    csv.write('\n')
     new_tweets += 1
+
 
 save_data()
 csv.close()
@@ -60,5 +82,5 @@ if new_tweets == 0:
   os.system('rm {0}'.format(CSV_FILE))
   print 'Nothing to do.'
 else:
-  print 'Exported {0} tweets to csv/export_{1}.csv. Currently {2} tweets exported to drive.'\
+  print 'Exported {0} tweets to csv/export_{1}.csv. Currently {2} tweets exported.'\
   .format(new_tweets, TIME, len(tweets_exported))

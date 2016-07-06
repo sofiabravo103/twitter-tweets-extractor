@@ -9,8 +9,8 @@ from information_spec import *
 TWEETS_PICKLE_FILE = 'pickles/filtered_tweets.p'
 
 def apply_filters(tweet):
-  user = tweet.user.screen_name
-  text = tweet.text
+  user = tweet['user']['screen_name']
+  text = tweet['text']
   for rw in spec_rejected_keywords:
     if rw in text:
       return False
@@ -43,6 +43,7 @@ api = twitter.Api(
 
 
 unfiltered_tweets = []
+unfiltered_dict_tweets = []
 
 for u in spec_users:
   unfiltered_tweets += api.GetUserTimeline(screen_name=u, count=5000)
@@ -56,10 +57,18 @@ load_data()
 new_tweets = 0
 
 for tw in unfiltered_tweets:
-  tw_hash = hashlib.md5(tw.text.encode('utf8')).hexdigest()
+  unfiltered_dict_tweets.append(tw.AsDict())
+
+for tw in unfiltered_dict_tweets:
+  if retweeted_status_as_separate_tweet and 'retweeted_status' in tw:
+    unfiltered_dict_tweets.append(tw['retweeted_status'])
+    del tw['retweeted_status']
+
+  tw['text'].encode('utf8')
+  tw_hash = hashlib.md5(tw['text'].encode('utf8')).hexdigest()
   if tw_hash not in filtered_tweets:
     if apply_filters(tw):
-      filtered_tweets[tw_hash] = tw.AsDict()
+      filtered_tweets[tw_hash] = tw
       new_tweets += 1
 
 save_data()

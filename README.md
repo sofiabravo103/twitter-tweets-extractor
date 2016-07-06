@@ -1,4 +1,4 @@
-# twitter-extractor 
+# twitter-extractor
 
 An extraction tool for  building machine learning training sets from Twitter.
 
@@ -26,7 +26,7 @@ An extraction tool for  building machine learning training sets from Twitter.
 
 ## Specifications file ##
 
-To get the extractor running you only need to fill the spec_information.py file (and locate it in the repo's root folder). First you will need to create a twitter app [here](https://apps.twitter.com/), 
+To get the extractor running you only need to fill the spec_information.py file (and locate it in the repo's root folder). First you will need to create a twitter app [here](https://apps.twitter.com/),
 and then go to **Keys and Access Tokens** to get your consumer key and access token, you will need this information
 to access twitter.
 
@@ -57,6 +57,8 @@ spec_rejected_keywords = ['...']
 spec_rejected_users = ['...']
 ~~~~~
 
+With twitter search sometimes you'll find retweeted tweets, in this case the tweet itself will have an `retweeted_status` attribute containing the original tweet. If you set the spec variavle `retweeted_status_as_separate_tweet` to `True` it will delete that attribute and process the original tweet as a separate one.
+
 ## Usage ##
 
 The extractor works like this: first performe a search to get tweets from the Twitter API, apply filters if defined in
@@ -77,5 +79,4 @@ This will create a csv file in a generated csv folder with the new tweets found 
 For the moment the only way to get full information of tweets collected (date, retweet count, user, and such) is to load the pickle file ```pickles/filtered_tweets.p```.
 
 ## Future Work ##
-1. Creating a script to deliver tweet information in a more elegant way than a pickle file.
-2. Add searches with multiple keywords using the library [TwitterSearch](https://pypi.python.org/pypi/TwitterSearch).
+Add searches with multiple keywords using the library [TwitterSearch](https://pypi.python.org/pypi/TwitterSearch).

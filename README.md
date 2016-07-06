@@ -57,7 +57,7 @@ spec_rejected_keywords = ['...']
 spec_rejected_users = ['...']
 ~~~~~
 
-With twitter search sometimes you'll find retweeted tweets, in this case the tweet itself will have an `retweeted_status` attribute containing the original tweet. If you set the spec variavle `retweeted_status_as_separate_tweet` to `True` it will delete that attribute and process the original tweet as a separate one.
+With twitter search sometimes you'll find retweeted tweets, in this case the tweet itself will have an `retweeted_status` attribute containing the original tweet. If you set the spec variavle `retweeted_status_as_separate_tweet` to `True` it will delete that attribute and process the original tweet as a separate one. **This variable must exist inside the file, if you don't want to use this beahviour set the variable to False**.
 
 ## Usage ##
 

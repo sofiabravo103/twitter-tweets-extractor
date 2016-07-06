@@ -1,3 +1,5 @@
+retweeted_status_as_separate_tweet = True
+
 spec_consumer_key = 'ACrAZyHASH'
 spec_consumer_secret = 'AnEVENcRAZIERHasH'
 spec_access_token = 'YeTAnOTHERCraZYHash'

@@ -5,6 +5,7 @@ import hashlib
 import pickle
 import time
 import sys
+import re
 from information_spec import *
 
 TWEETS_PICKLE_FILE = 'pickles/filtered_tweets.p'
@@ -39,10 +40,34 @@ def save_data():
   pickle.dump(tweets_exported, drive_file)
 
 
+def remove_separator(element):
+  try:
+    # case: element is a hash
+    for key in element.keys():
+      element[key] = remove_separator(element[key])
+  except AttributeError:
+    try:
+      # case: element is a str
+      element = re.sub(';', '', element)
+    except TypeError:
+      # case: element is not a hash nor a str
+      try:
+        # case: element is a list
+        for item in element:
+          item = remove_separator(item)
+      except TypeError:
+        # bool o number
+        # don't do anything
+        pass
+
+  return element
+
+
 load_data()
 new_tweets = 0
 
 for tweet in filtered_tweets.values():
+  remove_separator(tweet)
 
   # export only new tweets
   tw_hash = hashlib.md5(tweet['text'].encode('utf8')).hexdigest()

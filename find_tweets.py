@@ -4,6 +4,7 @@ import twitter
 import hashlib
 import pickle
 import os
+import re
 from information_spec import *
 
 TWEETS_PICKLE_FILE = 'pickles/filtered_tweets.p'
@@ -62,9 +63,12 @@ for tw in unfiltered_tweets:
 for tw in unfiltered_dict_tweets:
   if retweeted_status_as_separate_tweet and 'retweeted_status' in tw:
     unfiltered_dict_tweets.append(tw['retweeted_status'])
-    del tw['retweeted_status']
 
-  tw['text'].encode('utf8')
+    if delete_retweets:
+      continue
+    else:
+      del tw['retweeted_status']
+
   tw_hash = hashlib.md5(tw['text'].encode('utf8')).hexdigest()
   if tw_hash not in filtered_tweets:
     if apply_filters(tw):

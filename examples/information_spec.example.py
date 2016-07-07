@@ -1,4 +1,5 @@
 retweeted_status_as_separate_tweet = True
+delete_retweets = True
 
 spec_consumer_key = 'ACrAZyHASH'
 spec_consumer_secret = 'AnEVENcRAZIERHasH'
